@@ -16,6 +16,7 @@
 package com.squareup.leakcanary.internal;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -244,7 +245,10 @@ public final class DisplayLeakActivity extends Activity {
                                 result.failure));
                 setTitle(R.string.leak_canary_analysis_failed);
                 invalidateOptionsMenu();
-                getActionBar().setDisplayHomeAsUpEnabled(true);
+                ActionBar actionBar = getActionBar();
+                if (actionBar != null) {
+                    actionBar.setDisplayHomeAsUpEnabled(true);
+                }
                 actionButton.setVisibility(VISIBLE);
                 actionButton.setText(R.string.leak_canary_delete);
                 listView.setAdapter(null);
@@ -262,7 +266,10 @@ public final class DisplayLeakActivity extends Activity {
                         }
                     });
                     invalidateOptionsMenu();
-                    getActionBar().setDisplayHomeAsUpEnabled(true);
+                    ActionBar actionBar = getActionBar();
+                    if (actionBar != null) {
+                        actionBar.setDisplayHomeAsUpEnabled(true);
+                    }
                     actionButton.setVisibility(VISIBLE);
                     actionButton.setText(R.string.leak_canary_delete);
                     actionButton.setOnClickListener(new View.OnClickListener() {
@@ -298,7 +305,10 @@ public final class DisplayLeakActivity extends Activity {
                 });
                 invalidateOptionsMenu();
                 setTitle(getString(R.string.leak_canary_leak_list_title, getPackageName()));
-                getActionBar().setDisplayHomeAsUpEnabled(false);
+                ActionBar actionBar = getActionBar();
+                if (actionBar != null) {
+                    actionBar.setDisplayHomeAsUpEnabled(false);
+                }
                 actionButton.setText(R.string.leak_canary_delete_all);
                 actionButton.setOnClickListener(new View.OnClickListener() {
                     @Override

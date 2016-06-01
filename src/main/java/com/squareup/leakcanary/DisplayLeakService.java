@@ -104,9 +104,7 @@ public class DisplayLeakService extends AbstractAnalysisResultService {
                 }
             }
         }
-
-        PendingIntent pendingIntent =
-                DisplayLeakActivity.createPendingIntent(this, heapDump.referenceKey);
+        PendingIntent pendingIntent = DisplayLeakActivity.createPendingIntent(this, heapDump.referenceKey);
 
         String contentTitle;
         if (result.failure == null) {
@@ -133,7 +131,7 @@ public class DisplayLeakService extends AbstractAnalysisResultService {
             notification.icon = R.drawable.leak_canary_notification;
             notification.when = System.currentTimeMillis();
             notification.flags |= Notification.FLAG_AUTO_CANCEL;
-            notification.setLatestEventInfo(this, contentTitle, contentText, pendingIntent);
+//            notification.setLatestEventInfo(this, contentTitle, contentText, pendingIntent);
         } else {
             Notification.Builder builder = new Notification.Builder(this) //
                     .setSmallIcon(R.drawable.leak_canary_notification)
